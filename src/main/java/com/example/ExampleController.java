@@ -1,17 +1,17 @@
 package com.example;
 
+import io.micronaut.http.annotation.Controller;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-
+@Controller("/hello-world")
 public class ExampleController {
-    
-    @Path("/hello-world")
-    public class Resource {
-        @GET
-        @Produces("text/plain")
-        public String hello() {
-            return "Hello, World!";
-        }
+
+    @GET
+    @Produces("text/plain")
+    public String hello() {
+        return "Hello, World!";
     }
+
 }
