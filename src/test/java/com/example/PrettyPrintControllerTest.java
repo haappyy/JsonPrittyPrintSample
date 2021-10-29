@@ -40,4 +40,11 @@ public class PrettyPrintControllerTest {
         assertEquals(exception.getMessage(), "Bad Request");
     }
 
+    @Test()
+    void testInvalidInput() {
+        Throwable exception = Assertions.assertThrows(HttpClientResponseException.class, () -> {
+            httpClient.toBlocking().retrieve(HttpRequest.POST("/pretty","-,-.,-890809890"));
+        });
+        assertEquals(exception.getMessage(), "Bad Request");
+    }
 }
