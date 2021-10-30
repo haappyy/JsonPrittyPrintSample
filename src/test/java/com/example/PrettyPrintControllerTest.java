@@ -47,4 +47,13 @@ public class PrettyPrintControllerTest {
         });
         assertEquals(exception.getMessage(), "Bad Request");
     }
+    
+    
+    @Test()
+    void testNullInput() {
+        Throwable exception = Assertions.assertThrows(HttpClientResponseException.class, () -> {
+            httpClient.toBlocking().retrieve(HttpRequest.POST("/pretty",null));
+        });
+        assertEquals(exception.getMessage(), "Bad Request");
+    }
 }
